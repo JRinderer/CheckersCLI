@@ -3,7 +3,7 @@ package com.company;
 
 //what is  a square? What will it contain? A piece and it will be a specific color
 public class Square {
-    String piece;
+    Piece piece;
     String color;
     int x;
     int y;
@@ -25,11 +25,11 @@ public class Square {
         this.y = y;
     }
 
-    public String getPiece() {
+    public Piece getPiece() {
         return piece;
     }
 
-    public void setPiece(String piece) {
+    public void setPiece(Piece piece) {
         this.piece = piece;
     }
 

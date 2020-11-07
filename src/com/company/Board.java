@@ -163,7 +163,7 @@ public class Board{
         System.out.println(squares[7][7].getPiece());
     }
 
-    public void setPieceOnSpace(String piece, int x, int y){
+    public void setPieceOnSpace(Piece piece, int x, int y){
         squares[x][y].setPiece(piece);
     }
     public void clearSpace(Square sqr){

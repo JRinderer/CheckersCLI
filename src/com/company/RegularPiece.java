@@ -4,6 +4,7 @@ public class RegularPiece implements Piece {
     int color;
     int xCord;
     int yCord;
+    Moves mov;
 
     public int getColor() {
         return color;
@@ -34,6 +35,7 @@ public class RegularPiece implements Piece {
     }
 
     public void move(int x, int y){
+        mov = new Moves();
 
     }
 

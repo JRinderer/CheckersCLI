@@ -2,6 +2,8 @@ package com.company;
 
 public class Board{
 
+    RegularPiece redPiece;
+
     Square[][] squares = new Square[8][8];
 
     public Board(){
@@ -9,6 +11,9 @@ public class Board{
     }
 
     public void setBoard(){
+
+        redPiece = new RegularPiece();
+
         squares[0][0] =  new Square("__0-0__|",0,0,"");
         squares[0][1] = new Square("__Rr___",0,1,"RED");
         squares[0][2] =  new Square("|__0-2__|",0,2,"");
@@ -164,10 +169,11 @@ public class Board{
     }
 
     public void setPieceOnSpace(Piece piece, int x, int y){
+
         squares[x][y].setPiece(piece);
     }
     public void clearSpace(Square sqr){
-        sqr.setPiece("____");
+        squares
     }
 
 }

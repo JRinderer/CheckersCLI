@@ -41,7 +41,7 @@ public class Square {
         this.color = color;
     }
 
-    public Square(String piece, int x, int y, String col) {
+    public Square(Piece piece, int x, int y, String col) {
         this.setPiece(piece);
         this.setX(x);
         this.setY(y);

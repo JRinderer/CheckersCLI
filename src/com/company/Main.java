@@ -7,9 +7,12 @@ public class Main {
     //Fixing git
     public static void main(String[] args){
         Board myBoard = new Board();
+        System.out.println("=========================================================");
+        System.out.println("========================The Board========================");
         myBoard.showBoard();
 
-        System.out.println("=====================================");
+        System.out.println("=========================================================");
+        System.out.println("========================The Pieces=======================");
 
         ArrayList<Piece> currentPieces = new ArrayList<>();
         currentPieces = myBoard.getPieces();

@@ -7,6 +7,10 @@ public class RegularPiece implements Piece {
     int yCord;
     String name;
     Moves mov;
+    int id;
+    public static int counter=0;
+
+
 
     public int getColor() {
         return color;
@@ -48,13 +52,24 @@ public class RegularPiece implements Piece {
         this.mov = mov;
     }
 
-    public RegularPiece(int col){
-        this.color=col;
-
+    public int getId() {
+        return id;
     }
 
-    public RegularPiece(){
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public RegularPiece(int col){
+        this.color=col;
+        this.setId(counter);
+        counter++;
+
+        }
+
+    public RegularPiece(){
+        this.setId(counter);
+        counter++;
     }
 
     public void move(int x, int y){

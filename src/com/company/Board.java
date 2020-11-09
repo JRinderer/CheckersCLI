@@ -1,12 +1,16 @@
 package com.company;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Board {
 
-    RegularPiece redPiece[] = new RegularPiece[12];
-    RegularPiece whitePiece[] = new RegularPiece[12];
-    RegularPiece emptyPiece[] = new RegularPiece[40];
     String xCord;
     String yCord;
+    ArrayList<RegularPiece> redPieces = new ArrayList<RegularPiece>();
+    ArrayList<RegularPiece> whitePieces = new ArrayList<RegularPiece>();
+    ArrayList<RegularPiece> emptyPieces = new ArrayList<RegularPiece>();
+
 
     int pieceCounter = 0;
     int emptyCounter = 0;
@@ -16,6 +20,7 @@ public class Board {
     public Board() {
         this.setBoard();
     }
+
 
     public void setBoard() {
 
@@ -28,30 +33,17 @@ public class Board {
 
         //with empty squares created we can begin adding pieces row by row.
         //create 12 red pieces
-        for (int i = 0; i < 12; i++) {
-            redPiece[i] = new RegularPiece(1);
-        }
-        //create 12 white pieces
-        for (int i = 0; i < 12; i++) {
-            whitePiece[i] = new RegularPiece(2);
-        }
-        //create 40 empty spaces with an empty piece
-        for (int i = 0; i < 40; i++) {
-            emptyPiece[i] = new RegularPiece(0);
-        }
-
-        //with all the pieces created (empty Pieces for Empty spaces)
-        //loop through rows row 0:2 will be red. rows 3:4 will be totally empty. Row 5:7 will be white
+        ArrayList<RegularPiece> tempList = new ArrayList<>();
         for (int x = 0; x < 8; x++) {
             switch (x) {
                 case 0:
-                    setOddCols(x, redPiece);
+                    setOddCols(x, redPieces, "R");
                     break;
                 case 1:
-                    setEvenCols(x,redPiece);
+                    setEvenCols(x,redPieces,"R");
                     break;
                 case 2:
-                    setOddCols(x,redPiece);
+                    setOddCols(x,redPieces,"R");
                     break;
                 case 3: //empty rows
                     sentAllBlank(x);
@@ -60,30 +52,31 @@ public class Board {
                     sentAllBlank(x);
                     break;
                 case 5: //white rows
-                    setOddCols(x, whitePiece);
+                    setOddCols(x, whitePieces,"W");
                     break;
                 case 6: //white rows
-                    setEvenCols(x,whitePiece);
+                    setEvenCols(x,whitePieces,"W");
                     break;
                 case 7: //white rows
-                    setOddCols(x, whitePiece);
+                    setOddCols(x, whitePieces,"W");
                     break;
             }
-
         }
-
     }
 
-    public void setOddCols(int row, Piece[] pieces) {
+    public void setOddCols(int row, ArrayList<RegularPiece> pieces, String color) {
         int pieceCounter = 0;
         for(int y = 0;y<8;y++){
             if(y%2==0){
-                setPieceOnSpace(pieces[y],row,y);
-                pieces[y].setName("__R" +  pieceCounter + y + "_" );
+                RegularPiece thisPiece = new RegularPiece(1);
+                setPieceOnSpace(thisPiece,row,y);
+                thisPiece.setName("__"+ color +  row + "-" + y + "_" );
+                pieces.add(thisPiece);
             }
             else{
-                setPieceOnSpace(emptyPiece[y],row,y);
-                emptyPiece[y].setName("__" + row + "-" + y + "__");
+                RegularPiece emptyPiece = new RegularPiece(0);
+                setPieceOnSpace(emptyPiece,row,y);
+                emptyPiece.setName("__" + row + "-" + y + "__");
             }
 
         }
@@ -91,36 +84,38 @@ public class Board {
 
     public void sentAllBlank(int row){
         for (int y=0;y<8;y++){
-            setPieceOnSpace(emptyPiece[y],row,y);
+            RegularPiece emptyPiece = new RegularPiece(0);
+            setPieceOnSpace(emptyPiece,row,y);
+            emptyPiece.setName("__" + row + "-" + y + "__");
         }
     }
 
 
-    public void setEvenCols(int row,Piece[] pieces) {
+    public void setEvenCols(int row,ArrayList<RegularPiece> pieces, String color) {
         int pieceCounter = 0;
         for(int y = 0;y<8;y++){
             if(y%2!=0){
-                setPieceOnSpace(pieces[y],row,y);
-                pieces[y].setName("__R" + y +  pieceCounter + "_" );
+                RegularPiece thisPiece = new RegularPiece(1);
+                setPieceOnSpace(thisPiece,row,y);
+                thisPiece.setName("__"+ color +  row + "-" + y + "_" );
+                pieces.add(thisPiece);
             }
             else{
-                setPieceOnSpace(emptyPiece[y],row,y);
-                emptyPiece[y].setName("__" + row + "-" + y + "__");
+                RegularPiece emptyPiece = new RegularPiece(0);
+                setPieceOnSpace(emptyPiece,row,y);
+                emptyPiece.setName("__" + row + "-" + y + "__");
             }
 
         }
     }
 
     public void showBoard() {
-        pieceCounter = 0;
-        emptyCounter = 0;
-
         //print first row
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
                 System.out.print(squares[x][y].getPieceName());
-
             }
+            System.out.println();
         }
     }
 
@@ -131,6 +126,16 @@ public class Board {
 
     public void clearSpace(Square sqr) {
         //squares
+    }
+
+    public ArrayList<Piece> getPieces() {
+        ArrayList<Piece> tempList = new ArrayList<>();
+        for (int x = 0; x < 8; x++) {
+            for (int y = 0; y < 8; y++) {
+                tempList.add(squares[x][y].getPiece());
+            }
+        }
+        return tempList;
     }
 
 }

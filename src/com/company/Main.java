@@ -1,12 +1,20 @@
 package com.company;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args){
         Board myBoard = new Board();
         myBoard.showBoard();
 
-        //myBoard.setPieceOnSpace("r",3,1);
         System.out.println("=====================================");
+
+        ArrayList<Piece> currentPieces = new ArrayList<>();
+        currentPieces = myBoard.getPieces();
+        for(Piece p : currentPieces){
+            System.out.println(p.getName());
+        }
         //myBoard.showBoard();
 
         //RegularPiece myPiece = new RegularPiece();

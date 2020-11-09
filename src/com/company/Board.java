@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Board {
-
+    //Fixing git
     String xCord;
     String yCord;
     ArrayList<RegularPiece> redPieces = new ArrayList<RegularPiece>();

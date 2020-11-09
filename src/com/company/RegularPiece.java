@@ -1,6 +1,7 @@
 package com.company;
 
 public class RegularPiece implements Piece {
+    //Fixing git
     //an empty piece is red is 1 white 2
     int color;
     int xCord;

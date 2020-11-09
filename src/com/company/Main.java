@@ -7,10 +7,10 @@ public class Main {
 
         //myBoard.setPieceOnSpace("r",3,1);
         System.out.println("=====================================");
-        myBoard.showBoard();
+        //myBoard.showBoard();
 
-        RegularPiece myPiece = new RegularPiece();
-        myPiece.move(3,4);
+        //RegularPiece myPiece = new RegularPiece();
+        //myPiece.move(3,4);
 
     }
 }

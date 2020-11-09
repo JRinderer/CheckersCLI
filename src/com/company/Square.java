@@ -29,6 +29,10 @@ public class Square {
         return piece;
     }
 
+    public String getPieceName(){
+        return piece.getName();
+    }
+
     public void setPiece(Piece piece) {
         this.piece = piece;
     }
@@ -39,6 +43,10 @@ public class Square {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public Square(){
+
     }
 
     public Square(Piece piece, int x, int y, String col) {

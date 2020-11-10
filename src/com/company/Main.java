@@ -19,7 +19,16 @@ public class Main {
         for(Piece p : currentPieces){
             System.out.println(p.getName());
         }
-        //myBoard.showBoard();
+
+        Piece x = new RegularPiece();
+        x = currentPieces.get(16);
+        System.out.println(x.getName());
+
+        myBoard.setPieceOnSpace(x,3,1);
+
+        myBoard.removePieceOnSpace(2,0);
+
+        myBoard.showBoard();
 
         //RegularPiece myPiece = new RegularPiece();
         //myPiece.move(3,4);

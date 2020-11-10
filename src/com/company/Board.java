@@ -124,9 +124,12 @@ public class Board {
         squares[x][y].setPiece(piece);
     }
 
-    public void clearSpace(Square sqr) {
-        //squares
+    public void removePieceOnSpace(int x, int y){
+        RegularPiece emptyPiece = new RegularPiece(0);
+        emptyPiece.setName("__"+x+"-"+y+"__");
+        squares[x][y].setPiece(emptyPiece);
     }
+
 
     public ArrayList<Piece> getPieces() {
         ArrayList<Piece> tempList = new ArrayList<>();

@@ -63,4 +63,3 @@ Board:
     This is an over simplificaiton, but it's the heart of what we need. That should return to us whether a regular
     piece, king piece or no piece is on it. We should also be able to determine what "player" controls that piece (red
     or black).
-

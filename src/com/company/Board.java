@@ -5,15 +5,8 @@ import java.util.ArrayList;
 
 public class Board {
     //Fixing git
-    String xCord;
-    String yCord;
     ArrayList<RegularPiece> redPieces = new ArrayList<RegularPiece>();
     ArrayList<RegularPiece> whitePieces = new ArrayList<RegularPiece>();
-    ArrayList<RegularPiece> emptyPieces = new ArrayList<RegularPiece>();
-
-
-    int pieceCounter = 0;
-    int emptyCounter = 0;
 
     Square[][] squares = new Square[8][8];
 

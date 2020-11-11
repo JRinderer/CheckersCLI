@@ -73,9 +73,12 @@ public class RegularPiece implements Piece {
         counter++;
     }
 
-    public void move(int x, int y){
+    public boolean move(int x, int y){
+        int curX = this.xCord;
+        int curY = this.yCord;
         mov = new Moves(this, x,y);
-
+        boolean valid = mov.validMove(this);
+        return valid;
 
     }
 

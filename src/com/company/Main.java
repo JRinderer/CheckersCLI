@@ -17,13 +17,15 @@ public class Main {
         ArrayList<Piece> currentPieces = new ArrayList<>();
         currentPieces = myBoard.getPieces();
         for(Piece p : currentPieces){
-            System.out.println(p.getName());
+            //System.out.println(p.getName());
         }
 
         Piece x = new RegularPiece();
         x = currentPieces.get(16);
         System.out.println(x.getName());
-
+        boolean canMoveHere;
+        canMoveHere = x.move(3,1);
+        System.out.println(canMoveHere);
         myBoard.setPieceOnSpace(x,3,1);
 
         myBoard.removePieceOnSpace(2,0);

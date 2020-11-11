@@ -30,13 +30,13 @@ public class Board {
         for (int x = 0; x < 8; x++) {
             switch (x) {
                 case 0:
-                    setOddCols(x, redPieces, "R");
+                    setEvenCols(x, redPieces, "R");
                     break;
                 case 1:
-                    setEvenCols(x,redPieces,"R");
+                    setOddCols(x,redPieces,"R");
                     break;
                 case 2:
-                    setOddCols(x,redPieces,"R");
+                    setEvenCols(x,redPieces,"R");
                     break;
                 case 3: //empty rows
                     sentAllBlank(x);
@@ -64,6 +64,8 @@ public class Board {
                 RegularPiece thisPiece = new RegularPiece(1);
                 setPieceOnSpace(thisPiece,row,y);
                 thisPiece.setName("__"+ color +  row + "-" + y + "_" );
+                thisPiece.setxCord(row);
+                thisPiece.setyCord(y);
                 pieces.add(thisPiece);
             }
             else{
@@ -91,6 +93,8 @@ public class Board {
                 RegularPiece thisPiece = new RegularPiece(1);
                 setPieceOnSpace(thisPiece,row,y);
                 thisPiece.setName("__"+ color +  row + "-" + y + "_" );
+                thisPiece.setxCord(row);
+                thisPiece.setyCord(y);
                 pieces.add(thisPiece);
             }
             else{

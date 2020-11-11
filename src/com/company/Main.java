@@ -21,14 +21,14 @@ public class Main {
         }
 
         Piece x = new RegularPiece();
-        x = currentPieces.get(16);
+        x = currentPieces.get(17);
         System.out.println(x.getName());
         boolean canMoveHere;
-        canMoveHere = x.move(3,1);
+        canMoveHere = x.move(3,0);
         System.out.println(canMoveHere);
-        myBoard.setPieceOnSpace(x,3,1);
+        myBoard.setPieceOnSpace(x,3,0);
 
-        myBoard.removePieceOnSpace(2,0);
+        myBoard.removePieceOnSpace(2,1);
 
         myBoard.showBoard();
 

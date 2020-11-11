@@ -74,7 +74,7 @@ public class RegularPiece implements Piece {
     }
 
     public void move(int x, int y){
-        mov = new Moves(x,y);
+        mov = new Moves(this, x,y);
 
 
     }

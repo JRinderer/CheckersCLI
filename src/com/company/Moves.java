@@ -30,8 +30,9 @@ public class Moves {
         this.end = end;
     }
 
-    public Moves(int start, int end) {
+    public Moves(Piece piece, int start, int end) {
         this.start = start;
         this.end = end;
+        this.piece = piece;
     }
 }

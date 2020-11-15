@@ -9,6 +9,8 @@ public interface Piece {
     public int getId();
     public int getxCord();
     public int getyCord();
+    public String getColor();
+    public int getForwrdMove();
 
 
 }

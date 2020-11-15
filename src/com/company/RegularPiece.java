@@ -3,19 +3,28 @@ package com.company;
 public class RegularPiece implements Piece {
     //Fixing git
     //an empty piece is red is 1 white 2
-    int color;
+    String color;
     int xCord;
     int yCord;
     String name;
     Moves mov;
+    int forwrdMove;
     int id;
     public static int counter=0;
 
-    public int getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(int color) {
+    public int getForwrdMove() {
+        return forwrdMove;
+    }
+
+    public void setForwrdMove(int forwrdMove) {
+        this.forwrdMove = forwrdMove;
+    }
+
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -55,13 +64,16 @@ public class RegularPiece implements Piece {
         return id;
     }
 
+
+
     public void setId(int id) {
         this.id = id;
     }
 
-    public RegularPiece(int col){
+    public RegularPiece(String col, int forwrdMove){
         this.color=col;
         this.setId(counter);
+        this.forwrdMove = forwrdMove;
         counter++;
 
         }

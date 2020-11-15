@@ -30,13 +30,13 @@ public class Board {
         for (int x = 0; x < 8; x++) {
             switch (x) {
                 case 0:
-                    setEvenCols(x, redPieces, "R");
+                    setEvenCols(x, redPieces, "R",-1);
                     break;
                 case 1:
-                    setOddCols(x,redPieces,"R");
+                    setOddCols(x,redPieces,"R",-1);
                     break;
                 case 2:
-                    setEvenCols(x,redPieces,"R");
+                    setEvenCols(x,redPieces,"R",-1);
                     break;
                 case 3: //empty rows
                     sentAllBlank(x);
@@ -45,23 +45,23 @@ public class Board {
                     sentAllBlank(x);
                     break;
                 case 5: //white rows
-                    setOddCols(x, whitePieces,"W");
+                    setOddCols(x, whitePieces,"W",1);
                     break;
                 case 6: //white rows
-                    setEvenCols(x,whitePieces,"W");
+                    setEvenCols(x,whitePieces,"W",1);
                     break;
                 case 7: //white rows
-                    setOddCols(x, whitePieces,"W");
+                    setOddCols(x, whitePieces,"W",1);
                     break;
             }
         }
     }
 
-    public void setOddCols(int row, ArrayList<RegularPiece> pieces, String color) {
+    public void setOddCols(int row, ArrayList<RegularPiece> pieces, String color, int move) {
         int pieceCounter = 0;
         for(int y = 0;y<8;y++){
             if(y%2==0){
-                RegularPiece thisPiece = new RegularPiece(1);
+                RegularPiece thisPiece = new RegularPiece(color,move);
                 setPieceOnSpace(thisPiece,row,y);
                 thisPiece.setName("__"+ color +  row + "-" + y + "_" );
                 thisPiece.setxCord(row);
@@ -69,7 +69,7 @@ public class Board {
                 pieces.add(thisPiece);
             }
             else{
-                RegularPiece emptyPiece = new RegularPiece(0);
+                RegularPiece emptyPiece = new RegularPiece("",0);
                 setPieceOnSpace(emptyPiece,row,y);
                 emptyPiece.setName("__" + row + "-" + y + "__");
             }
@@ -79,18 +79,18 @@ public class Board {
 
     public void sentAllBlank(int row){
         for (int y=0;y<8;y++){
-            RegularPiece emptyPiece = new RegularPiece(0);
+            RegularPiece emptyPiece = new RegularPiece("",0);
             setPieceOnSpace(emptyPiece,row,y);
             emptyPiece.setName("__" + row + "-" + y + "__");
         }
     }
 
 
-    public void setEvenCols(int row,ArrayList<RegularPiece> pieces, String color) {
+    public void setEvenCols(int row,ArrayList<RegularPiece> pieces, String color, int move) {
         int pieceCounter = 0;
         for(int y = 0;y<8;y++){
             if(y%2!=0){
-                RegularPiece thisPiece = new RegularPiece(1);
+                RegularPiece thisPiece = new RegularPiece(color,move);
                 setPieceOnSpace(thisPiece,row,y);
                 thisPiece.setName("__"+ color +  row + "-" + y + "_" );
                 thisPiece.setxCord(row);
@@ -98,7 +98,7 @@ public class Board {
                 pieces.add(thisPiece);
             }
             else{
-                RegularPiece emptyPiece = new RegularPiece(0);
+                RegularPiece emptyPiece = new RegularPiece("",0);
                 setPieceOnSpace(emptyPiece,row,y);
                 emptyPiece.setName("__" + row + "-" + y + "__");
             }
@@ -122,7 +122,7 @@ public class Board {
     }
 
     public void removePieceOnSpace(int x, int y){
-        RegularPiece emptyPiece = new RegularPiece(0);
+        RegularPiece emptyPiece = new RegularPiece("",0);
         emptyPiece.setName("__"+x+"-"+y+"__");
         squares[x][y].setPiece(emptyPiece);
     }

@@ -52,14 +52,25 @@ public class Moves {
 
 
     public boolean validMove(Piece piece){
-        int validX = Math.abs(this.startX - this.endX);
+        //regular pieces can only move forward DO NOT ALLOW ABS on regular pieces
+        int validX = (this.startX - this.endX);
         int validY = Math.abs(this.startY - this.endY);
 
-        if(validX - validY == 0){
+
+        int frwdMove = piece.getForwrdMove();
+
+        //regular piece movement
+        if((validX ==frwdMove) && (validY == 1)){
             return true;
         }else{
             return false;
         }
+
+        /*if(validX - validY == 0){
+            return true;
+        }else{
+            return false;
+        }*/
     }
 
     public void pieceJumped(){

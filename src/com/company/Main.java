@@ -28,7 +28,7 @@ public class Main {
         y = currentPieces.get(40);
         z = currentPieces.get(42);
 
-        System.out.println(x.getName());
+
         boolean canMoveHere;
         canMoveHere = x.move(myBoard, 3,0);
 
@@ -49,7 +49,9 @@ public class Main {
         myBoard.removePieceOnSpace(5,2);*/
 
         canMoveHere = x.move(myBoard,4,1);
-
+        canMoveHere = x.move(myBoard,3,0);
+        canMoveHere = z.move(myBoard,4,3);
+        canMoveHere = z.move(myBoard,5,2);
 
         myBoard.showBoard();
 

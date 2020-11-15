@@ -62,6 +62,8 @@ public class Moves {
         }
     }
 
+
+
     public Moves(Piece piece, int endX, int endY) {
         this.startX = piece.getxCord();
         this.startY = piece.getyCord();

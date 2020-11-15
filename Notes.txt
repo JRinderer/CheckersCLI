@@ -181,3 +181,10 @@ The complexity comes in to play because we want to automatically handle when the
 select the position to move to.
 
 So how do we handle simple jumps?
+
+Option 1:
+    Explain that the user can "attack" a piece by moving to it's square. Then we can test if the piece after that one is
+    empty of has a piece on it.
+
+Option 2:
+    Let the user specify the coordinates to "jump" to, and check if a piece was jumped.

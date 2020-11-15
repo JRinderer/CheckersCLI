@@ -51,7 +51,7 @@ public class Moves {
     }
 
 
-    public boolean validMove(Piece piece){
+    public boolean validMove(Board board, Piece piece){
         //regular pieces can only move forward DO NOT ALLOW ABS on regular pieces
         int validX = (this.startX - this.endX);
         int validY = Math.abs(this.startY - this.endY);
@@ -73,7 +73,13 @@ public class Moves {
         }*/
     }
 
-    public void pieceJumped(){
+    public boolean pieceJumped(Board board, Piece atckPiece, int x, int y){
+        Piece jmpdPiece = board.squares[x][y].piece;
+        if((!jmpdPiece.getColor().equals("") && (!jmpdPiece.getColor().equals(atckPiece.getColor())))){
+            return true;
+        }else{
+            return false;
+        }
 
     }
 

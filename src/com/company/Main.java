@@ -48,10 +48,14 @@ public class Main {
         myBoard.setPieceOnSpace(z,4,3);
         myBoard.removePieceOnSpace(5,2);*/
 
-        canMoveHere = x.move(myBoard,4,1);
+        //canMoveHere = x.move(myBoard,4,1);
         canMoveHere = x.move(myBoard,3,0);
         canMoveHere = z.move(myBoard,4,3);
         canMoveHere = z.move(myBoard,5,2);
+        canMoveHere = y.move(myBoard,4,1);
+
+        //jump E5-0;
+        canMoveHere = x.move(myBoard,4,1);
 
         myBoard.showBoard();
 

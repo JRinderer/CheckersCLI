@@ -173,3 +173,11 @@ this.
 
 If a piece jumps any enemy pieces during this movement the validation should check this as well. For any square that is
 "crossed" with an enemy piece on it, the movement should "kill" and remove those pieces.
+
+When it comes to moving a simple solution with ABS and subtracting X and Y can work. The problem is what happens if
+the player wants to jump a piece?
+
+The complexity comes in to play because we want to automatically handle when the user jumps a piece; simply when they
+select the position to move to.
+
+So how do we handle simple jumps?

@@ -62,6 +62,10 @@ public class Moves {
         }
     }
 
+    public void pieceJumped(){
+
+    }
+
 
 
     public Moves(Piece piece, int endX, int endY) {

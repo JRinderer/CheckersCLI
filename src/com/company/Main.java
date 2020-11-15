@@ -30,10 +30,12 @@ public class Main {
 
         System.out.println(x.getName());
         boolean canMoveHere;
-        canMoveHere = x.move(3,0);
-        System.out.println(canMoveHere);
-        myBoard.setPieceOnSpace(x,3,0);
-        myBoard.removePieceOnSpace(2,1);
+        canMoveHere = x.move(myBoard, 3,0);
+
+        //leave for comments sake
+        //System.out.println(canMoveHere);
+        //myBoard.setPieceOnSpace(x,3,0);
+        //myBoard.removePieceOnSpace(2,1);
 
 
        /* canMoveHere = y.move(4,1);
@@ -46,8 +48,7 @@ public class Main {
         myBoard.setPieceOnSpace(z,4,3);
         myBoard.removePieceOnSpace(5,2);*/
 
-        canMoveHere = x.move(4,1);
-        System.out.println(canMoveHere);
+        canMoveHere = x.move(myBoard,4,1);
 
 
         myBoard.showBoard();

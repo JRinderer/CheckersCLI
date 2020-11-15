@@ -11,8 +11,6 @@ public class RegularPiece implements Piece {
     int id;
     public static int counter=0;
 
-
-
     public int getColor() {
         return color;
     }
@@ -73,12 +71,19 @@ public class RegularPiece implements Piece {
         counter++;
     }
 
-    public boolean move(int x, int y){
+    public boolean move(Board board, int x, int y){
         int curX = this.xCord;
         int curY = this.yCord;
         mov = new Moves(this, x,y);
         boolean valid = mov.validMove(this);
-        return valid;
+        //if the move is valid
+        if(valid == true){
+            this.xCord = x; //set the X coordinates so the pieces position is updated
+            this.yCord = y; //set the Y coordinates so the pieces position is updated
+            board.setPieceOnSpace(this,this.xCord,this.yCord); //move the piece on the board
+            board.removePieceOnSpace(curX,curY); //remove the piece from it's old position
+        }
+        return valid; //return valid so the game knows the piece was or wasn't valid
 
     }
 

@@ -57,13 +57,13 @@ public class Moves {
         int validX = (this.startX - this.endX);
         int validY = Math.abs(this.startY - this.endY);
 
-
         int frwdMove = piece.getForwrdMove();
+        int jumpMove = piece.getJumpMove();
 
         //regular piece movement validates the direction is correct... square comparison here is close but not exact
         if((validX ==frwdMove) && (validY == 1) && (!board.squares[endX][endY].getPiece().getColor().equals(piece.getColor()))){
             return true;
-        }else{
+        }else if((validX == jumpMove) && (validY == 2) && isSquareEmpty(board, this.endX,this.endY){
             return false;
         }
 
@@ -74,9 +74,17 @@ public class Moves {
         }*/
     }
 
+    public boolean isSquareEmpty(Board board, int x, int y){
+        if(board.squares[x][y].getPiece().getColor().equals("")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public boolean pieceJumped(Board board, Piece atckPiece, int x, int y){
         Piece jmpdPiece = board.squares[x][y].piece;
-        if((!jmpdPiece.getColor().equals("")) && (!jmpdPiece.getColor().equals(atckPiece.getColor()))&&()){
+        if((!jmpdPiece.getColor().equals("")) && (!jmpdPiece.getColor().equals(atckPiece.getColor()))){
             return true;
         }else{
             return false;

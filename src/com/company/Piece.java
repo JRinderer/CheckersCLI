@@ -11,6 +11,7 @@ public interface Piece {
     public int getyCord();
     public String getColor();
     public int getForwrdMove();
+    public int getJumpMove();
 
 
 }

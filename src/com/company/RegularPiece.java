@@ -9,8 +9,17 @@ public class RegularPiece implements Piece {
     String name;
     Moves mov;
     int forwrdMove;
+    int jumpMove;
     int id;
     public static int counter=0;
+
+    public int getJumpMove() {
+        return jumpMove;
+    }
+
+    public void setJumpMove(int jumpMove) {
+        this.jumpMove = jumpMove;
+    }
 
     public String getColor() {
         return color;
@@ -70,10 +79,11 @@ public class RegularPiece implements Piece {
         this.id = id;
     }
 
-    public RegularPiece(String col, int forwrdMove){
+    public RegularPiece(String col, int forwrdMove, int jumpMove){
         this.color=col;
         this.setId(counter);
         this.forwrdMove = forwrdMove;
+        this.jumpMove = jumpMove;
         counter++;
 
         }

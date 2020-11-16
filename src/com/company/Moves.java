@@ -64,6 +64,7 @@ public class Moves {
         if((validX ==frwdMove) && (validY == 1) && (!board.squares[endX][endY].getPiece().getColor().equals(piece.getColor()))){
             return true;
         }else if((validX == jumpMove) && (validY == 2) && (isSquareEmpty(board,endX,endY)) ){
+            //need to change - 1 to + 1 when white is moving
             boolean x = pieceJumped(board,piece,(endX-1),(endY-1));
             if(x){
                 board.removePieceOnSpace(endX-1,endY-1);

@@ -24,7 +24,7 @@ public class Main {
         Piece y = new RegularPiece();
         Piece z = new RegularPiece();
         Piece a = new RegularPiece();
-        a = currentPieces.get(10);
+        a = currentPieces.get(19);
 
         x = currentPieces.get(17);
         y = currentPieces.get(40);
@@ -32,7 +32,9 @@ public class Main {
 
 
         boolean canMoveHere;
-        canMoveHere = x.move(myBoard, 3,0);
+        //canMoveHere = x.move(myBoard, 3,0);
+
+        canMoveHere = a.move(myBoard,3,2);
 
         //this is an illegal move test
         //canMoveHere = a.move(myBoard,2,1);
@@ -56,13 +58,15 @@ public class Main {
         //canMoveHere = x.move(myBoard,4,1);
 
         //if this piece is not moved we can't jump
-        //canMoveHere = z.move(myBoard,4,3);    
+        //canMoveHere = z.move(myBoard,4,3);
 
         //this bottom is illegal move
         //canMoveHere = z.move(myBoard,5,2);
 
         canMoveHere = y.move(myBoard,4,1);
-        canMoveHere = x.move(myBoard,5,2);
+        //canMoveHere = x.move(myBoard,5,2);
+
+        canMoveHere = y.move(myBoard,2,3);
 
         //jump E5-0;
         //canMoveHere = x.move(myBoard,4,1);

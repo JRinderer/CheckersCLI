@@ -50,7 +50,7 @@ public class Moves {
         this.piece = piece;
     }
 
-
+//test
     public boolean validMove(Board board, Piece piece){
         //regular pieces can only move forward DO NOT ALLOW ABS on regular pieces
         //also need to check if position is empty

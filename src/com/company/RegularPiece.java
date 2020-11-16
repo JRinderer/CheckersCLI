@@ -98,20 +98,14 @@ public class RegularPiece implements Piece {
         int curY = this.yCord;
         mov = new Moves(this, x,y);
         boolean valid = mov.validMove(board,this);
-        boolean jump = mov.pieceJumped(board,this,x,y);
         //if the move is valid
-        if((valid == true) && (jump == false)){
+        if(valid){
             this.xCord = x; //set the X coordinates so the pieces position is updated
             this.yCord = y; //set the Y coordinates so the pieces position is updated
             board.setPieceOnSpace(this,this.xCord,this.yCord); //move the piece on the board
             board.removePieceOnSpace(curX,curY); //remove the piece from it's old position
-        }else if((valid == true) && (jump==true)){
-            this.xCord = x+1;
-            this.yCord= y+1;
-            board.setPieceOnSpace(this,this.xCord,this.yCord);
-            board.removePieceOnSpace(curX,curY);
-            board.removePieceOnSpace(x,y);
         }
+
         return valid; //return valid so the game knows the piece was or wasn't valid
 
     }

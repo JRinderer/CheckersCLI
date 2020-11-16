@@ -54,10 +54,15 @@ public class Main {
         myBoard.removePieceOnSpace(5,2);*/
 
         //canMoveHere = x.move(myBoard,4,1);
-        canMoveHere = x.move(myBoard,3,0);
-        //canMoveHere = z.move(myBoard,4,3);
+
+        //if this piece is not moved we can't jump
+        //canMoveHere = z.move(myBoard,4,3);    
+
+        //this bottom is illegal move
         //canMoveHere = z.move(myBoard,5,2);
-        //canMoveHere = y.move(myBoard,4,1);
+
+        canMoveHere = y.move(myBoard,4,1);
+        canMoveHere = x.move(myBoard,5,2);
 
         //jump E5-0;
         //canMoveHere = x.move(myBoard,4,1);

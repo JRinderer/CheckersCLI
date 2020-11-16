@@ -23,6 +23,8 @@ public class Main {
         Piece x = new RegularPiece();
         Piece y = new RegularPiece();
         Piece z = new RegularPiece();
+        Piece a = new RegularPiece();
+        a = currentPieces.get(10);
 
         x = currentPieces.get(17);
         y = currentPieces.get(40);
@@ -31,6 +33,9 @@ public class Main {
 
         boolean canMoveHere;
         canMoveHere = x.move(myBoard, 3,0);
+
+        //this is an illegal move test
+        //canMoveHere = a.move(myBoard,2,1);
 
         //leave for comments sake
         //System.out.println(canMoveHere);
@@ -50,8 +55,8 @@ public class Main {
 
         //canMoveHere = x.move(myBoard,4,1);
         canMoveHere = x.move(myBoard,3,0);
-        canMoveHere = z.move(myBoard,4,3);
-        canMoveHere = z.move(myBoard,5,2);
+        //canMoveHere = z.move(myBoard,4,3);
+        //canMoveHere = z.move(myBoard,5,2);
         canMoveHere = y.move(myBoard,4,1);
 
         //jump E5-0;

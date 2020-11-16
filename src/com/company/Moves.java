@@ -53,14 +53,15 @@ public class Moves {
 
     public boolean validMove(Board board, Piece piece){
         //regular pieces can only move forward DO NOT ALLOW ABS on regular pieces
+        //also need to check if position is empty
         int validX = (this.startX - this.endX);
         int validY = Math.abs(this.startY - this.endY);
 
 
         int frwdMove = piece.getForwrdMove();
 
-        //regular piece movement
-        if((validX ==frwdMove) && (validY == 1)){
+        //regular piece movement validates the direction is correct... square comparison here is close but not exact
+        if((validX ==frwdMove) && (validY == 1) && (!board.squares[endX][endY].getPiece().getColor().equals(piece.getColor()))){
             return true;
         }else{
             return false;
@@ -75,15 +76,13 @@ public class Moves {
 
     public boolean pieceJumped(Board board, Piece atckPiece, int x, int y){
         Piece jmpdPiece = board.squares[x][y].piece;
-        if((!jmpdPiece.getColor().equals("") && (!jmpdPiece.getColor().equals(atckPiece.getColor())))){
+        if((!jmpdPiece.getColor().equals("")) && (!jmpdPiece.getColor().equals(atckPiece.getColor()))&&()){
             return true;
         }else{
             return false;
         }
 
-    }
-
-
+}
 
     public Moves(Piece piece, int endX, int endY) {
         this.startX = piece.getxCord();

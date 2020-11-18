@@ -12,6 +12,8 @@ public interface Piece {
     public String getColor();
     public int getForwrdMove();
     public int getJumpMove();
+    public int getStatus();
+    public void setStatus(int status);
 
 
 }

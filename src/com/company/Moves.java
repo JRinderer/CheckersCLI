@@ -67,10 +67,10 @@ public class Moves {
             return true;
         }else if((validX == jumpMove) && (validY == 2) && (isSquareEmpty(board,endX,endY)) ){
             //need to change - 1 to + 1 when white is moving
-            boolean x = pieceJumped(board,piece,(jmpX),(endY-1));
+            boolean x = pieceJumped(board,piece,(jmpX),(jmpY));
             //boolean x = pieceJumped(board,piece,(endX-1),(endY-1));
             if(x){
-                board.removePieceOnSpace(jmpX,endY-1);
+                board.removePieceOnSpace(jmpX,jmpY);
                 return x;
             }else{
                 return false;
@@ -97,6 +97,7 @@ public class Moves {
     public boolean pieceJumped(Board board, Piece atckPiece, int x, int y){
         Piece jmpdPiece = board.squares[x][y].piece;
         if((!jmpdPiece.getColor().equals("")) && (!jmpdPiece.getColor().equals(atckPiece.getColor()))){
+            jmpdPiece.setStatus(0);
             return true;
         }else{
             return false;

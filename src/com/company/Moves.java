@@ -59,7 +59,7 @@ public class Moves {
 
         int frwdMove = piece.getForwrdMove();
         int jmpX = endX + frwdMove;
-        int jmpY = endY + frwdMove;
+        int jmpY = Math.abs(endY + frwdMove);
         int jumpMove = piece.getJumpMove();
 
         //regular piece movement validates the direction is correct... square comparison here is close but not exact

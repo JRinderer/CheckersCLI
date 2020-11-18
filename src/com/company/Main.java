@@ -26,12 +26,12 @@ public class Main {
         Piece a = new RegularPiece();
         Piece b = new RegularPiece();
 
-        a = currentPieces.get(19);
+        a = currentPieces.get(19); //R2-3
 
-        x = currentPieces.get(17);
-        y = currentPieces.get(40);
-        z = currentPieces.get(42);
-        b = currentPieces.get(51);
+        x = currentPieces.get(17); //R2-1
+        y = currentPieces.get(40); //W5-0
+        z = currentPieces.get(42); //W5-2
+        b = currentPieces.get(51); // W6-3
 
 
         boolean canMoveHere;
@@ -91,7 +91,11 @@ public class Main {
 
         System.out.println("=========================================================");
         System.out.println("========================The Board========================");
+        myBoard.showBoard();
 
+        System.out.println("=========================================================");
+        System.out.println("========================The Board========================");
+        canMoveHere = a.move(myBoard,5,0);
         myBoard.showBoard();
 
 

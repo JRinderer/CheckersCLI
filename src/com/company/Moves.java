@@ -97,6 +97,7 @@ public class Moves {
     public boolean pieceJumped(Board board, Piece atckPiece, int x, int y){
         Piece jmpdPiece = board.squares[x][y].piece;
         if((!jmpdPiece.getColor().equals("")) && (!jmpdPiece.getColor().equals(atckPiece.getColor()))){
+            jmpdPiece.setStatus(0);
             return true;
         }else{
             return false;

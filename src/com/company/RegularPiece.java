@@ -11,7 +11,16 @@ public class RegularPiece implements Piece {
     int forwrdMove;
     int jumpMove;
     int id;
+    int status;
     public static int counter=0;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public int getJumpMove() {
         return jumpMove;
@@ -84,6 +93,7 @@ public class RegularPiece implements Piece {
         this.setId(counter);
         this.forwrdMove = forwrdMove;
         this.jumpMove = jumpMove;
+        this.status=1;
         counter++;
 
         }
@@ -98,8 +108,8 @@ public class RegularPiece implements Piece {
         int curY = this.yCord;
         mov = new Moves(this, x,y);
         boolean valid = mov.validMove(board,this);
-        //if the move is valid
-        if(valid){
+        //if the move is valid and the piece isn't dead, dead being 0
+        if(valid && this.status>0){
             this.xCord = x; //set the X coordinates so the pieces position is updated
             this.yCord = y; //set the Y coordinates so the pieces position is updated
             board.setPieceOnSpace(this,this.xCord,this.yCord); //move the piece on the board

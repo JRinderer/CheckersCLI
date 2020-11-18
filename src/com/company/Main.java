@@ -24,11 +24,14 @@ public class Main {
         Piece y = new RegularPiece();
         Piece z = new RegularPiece();
         Piece a = new RegularPiece();
+        Piece b = new RegularPiece();
+
         a = currentPieces.get(19);
 
         x = currentPieces.get(17);
         y = currentPieces.get(40);
         z = currentPieces.get(42);
+        b = currentPieces.get(51);
 
 
         boolean canMoveHere;
@@ -83,6 +86,14 @@ public class Main {
         myBoard.showBoard();
         //RegularPiece myPiece = new RegularPiece();
         //myPiece.move(3,4);
+        canMoveHere = b.move(myBoard,4,1);
+        b.getName();
+
+        System.out.println("=========================================================");
+        System.out.println("========================The Board========================");
+
+        myBoard.showBoard();
+
 
     }
 }

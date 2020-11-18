@@ -188,3 +188,8 @@ Option 1:
 
 Option 2:
     Let the user specify the coordinates to "jump" to, and check if a piece was jumped.
+
+Lets dive more into the details of the pieces.
+
+First, we need to have a class for our pieces; we can extend (or use an interface) to regular pieces and king pieces.
+

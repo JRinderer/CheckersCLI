@@ -50,8 +50,8 @@ public class Moves {
         this.piece = piece;
     }
 
-//test
-    public boolean validMove(Board board, Piece piece){
+    //test
+    public boolean validMove(Board board, Piece piece) {
         //regular pieces can only move forward DO NOT ALLOW ABS on regular pieces
         //also need to check if position is empty
         int validX = (this.startX - this.endX);
@@ -63,19 +63,19 @@ public class Moves {
         int jumpMove = piece.getJumpMove();
 
         //regular piece movement validates the direction is correct... square comparison here is close but not exact
-        if((validX ==frwdMove) && (validY == 1) && (!board.squares[endX][endY].getPiece().getColor().equals(piece.getColor()))){
+        if ((validX == frwdMove) && (validY == 1) && (!board.squares[endX][endY].getPiece().getColor().equals(piece.getColor()))) {
             return true;
-        }else if((validX == jumpMove) && (validY == 2) && (isSquareEmpty(board,endX,endY)) ){
+        } else if ((validX == jumpMove) && (validY == 2) && (isSquareEmpty(board, endX, endY))) {
             //need to change - 1 to + 1 when white is moving
-            boolean x = pieceJumped(board,piece,(jmpX),(jmpY));
+            boolean x = pieceJumped(board, piece, (jmpX), (jmpY));
             //boolean x = pieceJumped(board,piece,(endX-1),(endY-1));
-            if(x){
-                board.removePieceOnSpace(jmpX,jmpY);
+            if (x) {
+                board.removePieceOnSpace(jmpX, jmpY);
                 return x;
-            }else{
+            } else {
                 return false;
             }
-        }else{
+        } else {
             return false;
         }
 
@@ -86,24 +86,26 @@ public class Moves {
         }*/
     }
 
-    public boolean isSquareEmpty(Board board, int x, int y){
-        if(board.squares[x][y].getPiece().getColor().equals("")){
+    public boolean isSquareEmpty(Board board, int x, int y) {
+        if (board.squares[x][y].getPiece().getColor().equals("")) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public boolean pieceJumped(Board board, Piece atckPiece, int x, int y){
+    public boolean pieceJumped(Board board, Piece atckPiece, int x, int y) {
         Piece jmpdPiece = board.squares[x][y].piece;
-        if((!jmpdPiece.getColor().equals("")) && (!jmpdPiece.getColor().equals(atckPiece.getColor()))){
+        if ((!jmpdPiece.getColor().equals("")) && (!jmpdPiece.getColor().equals(atckPiece.getColor()))) {
             jmpdPiece.setStatus(0);
             return true;
-        }else{
+        } else {
             return false;
         }
 
-}
+    }
+
+
 
     public Moves(Piece piece, int endX, int endY) {
         this.startX = piece.getxCord();

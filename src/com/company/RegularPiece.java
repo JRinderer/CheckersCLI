@@ -120,6 +120,10 @@ public class RegularPiece implements Piece {
 
     }
 
+    public void convertToKing(){
+
+    }
+
     public boolean isJump(Piece self,int x, int y){
 
         return true;

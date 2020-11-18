@@ -64,11 +64,12 @@ public class Main {
         //canMoveHere = z.move(myBoard,5,2);
 
         canMoveHere = y.move(myBoard,4,1);
-        canMoveHere = x.move(myBoard,5,2);
+
         System.out.println("=========================================================");
         System.out.println("========================The Board========================");
         myBoard.showBoard();
-        //canMoveHere = y.move(myBoard,2,3);
+
+        canMoveHere = x.move(myBoard,5,2);
 
         //jump E5-0;
         //canMoveHere = x.move(myBoard,4,1);
@@ -76,6 +77,10 @@ public class Main {
         System.out.println("========================The Board========================");
         myBoard.showBoard();
 
+        System.out.println("=========================================================");
+        System.out.println("========================The Board========================");
+        canMoveHere = y.move(myBoard,2,3);
+        myBoard.showBoard();
         //RegularPiece myPiece = new RegularPiece();
         //myPiece.move(3,4);
 

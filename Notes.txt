@@ -193,3 +193,30 @@ Lets dive more into the details of the pieces.
 
 First, we need to have a class for our pieces; we can extend (or use an interface) to regular pieces and king pieces.
 
+We now have the ability to move pieces correctly, and jump pieces correctly.
+
+With this I now need to implement the king piece. I'm not sure the best way to do that. Possibly merely flipping a
+variable on RegularPieces.
+
+If we decide to take the class route, and create a new piece, we need to update that. What I mean is, when we create
+the king piece, the list of pieces in my Main method are outdated with regular pieces.
+
+I would need to, in my interface always get all the piece on my board. What might be better approach in my bord is to
+return a list of all the pieces on the board as I print the board out as well.
+
+What this does, is every time the interface team displays the board, they also get an updated list of pieces available
+as well.
+
+Another valid route to take is to "convert" that specific piece to a king piece by using a variable in my RegularPiece
+class as a sort of switch. When I reach row 0, I can simply flip that switch.
+
+Both of these are valid approaches that have different strengths and weaknesses. The first, we'd always be giving the
+interface developer a list of pieces on the board every time they show the board. Not necessairly bad, but possibly
+resource intensive.
+
+The other method is semi-messy because a King piece is really a new piece; in some games of checkers they simply flip
+the piece over and there's a crown. This indicates the piece is a king. In others, they stack two pieces together.
+
+Frankly, either is valid in my opinion for accomplishing what I want to do. I prefer the first method of passing the
+interface developer a list of all active pieces every time they show the board. It also lets me seperate out the king
+pieces from regular pieces. Something I want to do simply as an example.

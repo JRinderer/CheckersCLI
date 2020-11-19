@@ -129,7 +129,7 @@ public class RegularPiece implements Piece {
             board.setPieceOnSpace(this,this.xCord,this.yCord); //move the piece on the board
             board.removePieceOnSpace(curX,curY); //remove the piece from it's old position
             if(mov.isKingRow(this)){
-                KingPiece newKing = new KingPiece(this.color,Math.abs(this.forwrdMove)+1,this.jumpMove);
+                KingPiece newKing = new KingPiece(this.color,Math.abs(this.forwrdMove),this.jumpMove);
                 newKing.setName("_K"+ color +  this.getxCord() + "-" + this.getyCord() + "_" );
                 board.removePieceOnSpace(this.xCord,this.yCord);
                 this.setStatus(0);

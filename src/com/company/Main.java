@@ -117,5 +117,20 @@ public class Main {
         w72 = currentPieces.get(58);
         System.out.println(w72.getName());
 
+        System.out.println("=========================================================");
+        System.out.println("========================The Board========================");
+        canMoveHere = w72.move(myBoard,6,1);
+        currentPieces = myBoard.showBoard();
+
+        System.out.println("=========================================================");
+        System.out.println("========================The Board========================");
+        canMoveHere = z.move(myBoard,5,2);
+        currentPieces = myBoard.showBoard();
+
+        System.out.println("=========================================================");
+        System.out.println("========================The Board========================");
+        canMoveHere = w72.move(myBoard,5,0);
+        currentPieces = myBoard.showBoard();
+
     }
 }

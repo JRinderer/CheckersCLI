@@ -12,7 +12,16 @@ public class RegularPiece implements Piece {
     int jumpMove;
     int id;
     int status;
+    int kingRow;
     public static int counter=0;
+
+    public int getKingRow() {
+        return kingRow;
+    }
+
+    public void setKingRow(int kingRow) {
+        this.kingRow = kingRow;
+    }
 
     public int getStatus() {
         return status;
@@ -94,6 +103,11 @@ public class RegularPiece implements Piece {
         this.forwrdMove = forwrdMove;
         this.jumpMove = jumpMove;
         this.status=1;
+        if(col.equals("R")){
+            this.kingRow = 7;
+        }else{
+            this.kingRow = 0;
+        }
         counter++;
 
         }
@@ -114,6 +128,15 @@ public class RegularPiece implements Piece {
             this.yCord = y; //set the Y coordinates so the pieces position is updated
             board.setPieceOnSpace(this,this.xCord,this.yCord); //move the piece on the board
             board.removePieceOnSpace(curX,curY); //remove the piece from it's old position
+            if(mov.isKingRow(this)){
+                KingPiece newKing = new KingPiece(this.color,Math.abs(this.forwrdMove)+1,this.jumpMove);
+                newKing.setName("_K"+ color +  this.getxCord() + "-" + this.getyCord() + "_" );
+                board.removePieceOnSpace(this.xCord,this.yCord);
+                this.setStatus(0);
+                newKing.setxCord(this.xCord);
+                newKing.setyCord(this.yCord);
+                board.setPieceOnSpace(newKing,newKing.xCord,newKing.yCord);
+            }
         }
 
         return valid; //return valid so the game knows the piece was or wasn't valid

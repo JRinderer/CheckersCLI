@@ -94,6 +94,14 @@ public class Moves {
         }
     }
 
+    public boolean isKingRow(Piece piece){
+        if(piece.getxCord()==piece.getKingRow()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public boolean pieceJumped(Board board, Piece atckPiece, int x, int y) {
         Piece jmpdPiece = board.squares[x][y].piece;
         if ((!jmpdPiece.getColor().equals("")) && (!jmpdPiece.getColor().equals(atckPiece.getColor()))) {

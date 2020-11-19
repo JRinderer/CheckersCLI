@@ -14,6 +14,8 @@ public interface Piece {
     public int getJumpMove();
     public int getStatus();
     public void setStatus(int status);
+    public void setKingRow(int kingRow);
+    public int getKingRow();
 
 
 }

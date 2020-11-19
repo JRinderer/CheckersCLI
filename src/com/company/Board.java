@@ -106,14 +106,17 @@ public class Board {
         }
     }
 
-    public void showBoard() {
+    public ArrayList<Piece> showBoard() {
         //print first row
+        ArrayList<Piece> tempList = new ArrayList<>();
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
                 System.out.print(squares[x][y].getPieceName());
+                tempList.add(squares[x][y].getPiece());
             }
             System.out.println();
         }
+        return tempList;
     }
 
     public void setPieceOnSpace(Piece piece, int x, int y ) {

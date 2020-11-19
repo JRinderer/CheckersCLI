@@ -113,6 +113,9 @@ public class Main {
         System.out.println("========================The Board========================");
         canMoveHere = a.move(myBoard,7,2);
         currentPieces = myBoard.showBoard();
+        //piece was created on square 58, so it's still square 58. Technically a brand new piece.
+        w72 = currentPieces.get(58);
+        System.out.println(w72.getName());
 
     }
 }

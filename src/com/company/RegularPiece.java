@@ -123,7 +123,7 @@ public class RegularPiece implements Piece {
         mov = new Moves(this, x,y);
         boolean valid = mov.validMove(board,this);
         //if the move is valid and the piece isn't dead, dead being 0
-        if(valid && this.status>0){
+        if(valid){
             this.xCord = x; //set the X coordinates so the pieces position is updated
             this.yCord = y; //set the Y coordinates so the pieces position is updated
             board.setPieceOnSpace(this,this.xCord,this.yCord); //move the piece on the board

@@ -54,7 +54,17 @@ public class Moves {
     public boolean validMove(Board board, Piece piece) {
         //regular pieces can only move forward DO NOT ALLOW ABS on regular pieces
         //also need to check if position is empty
-        int validX = (this.startX - this.endX);
+        int validX;
+        if(piece.getStatus() <= 0){
+            return false;
+        }
+
+        if(piece.getName().contains("K")){
+            validX = Math.abs(this.startX - this.endX);
+        }else{
+            validX = (this.startX - this.endX);
+        }
+
         int validY = Math.abs(this.startY - this.endY);
 
         int frwdMove = piece.getForwrdMove();

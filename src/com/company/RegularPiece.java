@@ -128,13 +128,14 @@ public class RegularPiece implements Piece {
             this.yCord = y; //set the Y coordinates so the pieces position is updated
             board.setPieceOnSpace(this,this.xCord,this.yCord); //move the piece on the board
             board.removePieceOnSpace(curX,curY); //remove the piece from it's old position
-            if(mov.isKingRow(this)){
-                KingPiece newKing = new KingPiece(this.color,Math.abs(this.forwrdMove),this.jumpMove);
+            if(mov.isKingRow(this) && !this.getName().contains("K")){
+                KingPiece newKing = new KingPiece(this.color,Math.abs(this.forwrdMove),Math.abs(this.jumpMove));
                 newKing.setName("_K"+ color +  this.getxCord() + "-" + this.getyCord() + "_" );
                 board.removePieceOnSpace(this.xCord,this.yCord);
                 this.setStatus(0);
                 newKing.setxCord(this.xCord);
                 newKing.setyCord(this.yCord);
+                newKing.setStatus(1);
                 board.setPieceOnSpace(newKing,newKing.xCord,newKing.yCord);
             }
         }

@@ -27,6 +27,7 @@ public class Main {
         Piece z = new RegularPiece();
         Piece a = new RegularPiece();
         Piece b = new RegularPiece();
+        Piece c = new RegularPiece();
         Piece w72 = new RegularPiece();
 
         a = currentPieces.get(19); //R2-3
@@ -34,6 +35,7 @@ public class Main {
         x = currentPieces.get(17); //R2-1
         y = currentPieces.get(40); //W5-0
         z = currentPieces.get(42); //W5-2
+        c = currentPieces.get(44); //W5-4
         b = currentPieces.get(51); // W6-3
         w72 = currentPieces.get(58);
         //System.out.println(w72.getName());
@@ -117,21 +119,36 @@ public class Main {
         currentPieces = myBoard.showBoard();
         //piece was created on square 58, so it's still square 58. Technically a brand new piece.
         w72 = currentPieces.get(58);
+        System.out.println(w72.getStatus());
         System.out.println(w72.getName());
 
         System.out.println("=========================================================");
         System.out.println("========================The Board========================");
         canMoveHere = w72.move(myBoard,6,1);
+        System.out.println(w72.getStatus());
         currentPieces = myBoard.showBoard();
 
         System.out.println("=========================================================");
         System.out.println("========================The Board========================");
         canMoveHere = w72.move(myBoard,7,2);
+        System.out.println(w72.getStatus());
         currentPieces = myBoard.showBoard();
 
         System.out.println("=========================================================");
         System.out.println("========================The Board========================");
         //canMoveHere = w72.move(myBoard,5,0);
+        currentPieces = myBoard.showBoard();
+
+        System.out.println("=========================================================");
+        System.out.println("========================The Board========================");
+        canMoveHere = c.move(myBoard,4,5);
+        currentPieces = myBoard.showBoard();
+
+        //red king takes white regular at 6-3;
+        System.out.println("=========================================================");
+        System.out.println("========================The Board========================");
+        System.out.println(w72.getStatus());
+        canMoveHere = w72.move(myBoard,5,4);
         currentPieces = myBoard.showBoard();
 
     }

@@ -6,16 +6,18 @@ import java.util.ArrayList;
 public class Main {
     //Fixing git
     public static void main(String[] args){
+        ArrayList<Piece> currentPieces = new ArrayList<>();
         Board myBoard = new Board();
         System.out.println("=========================================================");
         System.out.println("========================The Board========================");
-        myBoard.showBoard();
+
+        currentPieces = myBoard.showBoard();
 
         System.out.println("=========================================================");
         System.out.println("========================The Pieces=======================");
 
-        ArrayList<Piece> currentPieces = new ArrayList<>();
-        currentPieces = myBoard.getPieces();
+
+
         for(Piece p : currentPieces){
             //System.out.println(p.getName());
         }
@@ -25,6 +27,7 @@ public class Main {
         Piece z = new RegularPiece();
         Piece a = new RegularPiece();
         Piece b = new RegularPiece();
+        Piece w72 = new RegularPiece();
 
         a = currentPieces.get(19); //R2-3
 
@@ -32,6 +35,8 @@ public class Main {
         y = currentPieces.get(40); //W5-0
         z = currentPieces.get(42); //W5-2
         b = currentPieces.get(51); // W6-3
+        w72 = currentPieces.get(58);
+        //System.out.println(w72.getName());
 
 
         boolean canMoveHere;
@@ -78,16 +83,16 @@ public class Main {
         //canMoveHere = x.move(myBoard,4,1);
         System.out.println("=========================================================");
         System.out.println("========================The Board========================");
-        myBoard.showBoard();
+        currentPieces = myBoard.showBoard();
 
         System.out.println("=========================================================");
         System.out.println("========================The Board========================");
         canMoveHere = y.move(myBoard,2,3);
-        myBoard.showBoard();
+        currentPieces =  myBoard.showBoard();
         //RegularPiece myPiece = new RegularPiece();
         //myPiece.move(3,4);
         canMoveHere = b.move(myBoard,4,1);
-        b.getName();
+        //b.getName();
 
         System.out.println("=========================================================");
         System.out.println("========================The Board========================");
@@ -96,8 +101,38 @@ public class Main {
         System.out.println("=========================================================");
         System.out.println("========================The Board========================");
         canMoveHere = a.move(myBoard,5,0);
-        myBoard.showBoard();
+        //jump R2-3
+        //canMoveHere = z.move(myBoard,2,1);
+        currentPieces = myBoard.showBoard();
 
+        System.out.println("=========================================================");
+        System.out.println("========================The Board========================");
+        canMoveHere = w72.move(myBoard,6,3);
+        currentPieces = myBoard.showBoard();
+
+        //R2-3 is kinged
+        System.out.println("=========================================================");
+        System.out.println("========================The Board========================");
+        canMoveHere = a.move(myBoard,7,2);
+        currentPieces = myBoard.showBoard();
+        //piece was created on square 58, so it's still square 58. Technically a brand new piece.
+        w72 = currentPieces.get(58);
+        System.out.println(w72.getName());
+
+        System.out.println("=========================================================");
+        System.out.println("========================The Board========================");
+        canMoveHere = w72.move(myBoard,6,1);
+        currentPieces = myBoard.showBoard();
+
+        System.out.println("=========================================================");
+        System.out.println("========================The Board========================");
+        canMoveHere = w72.move(myBoard,7,2);
+        currentPieces = myBoard.showBoard();
+
+        System.out.println("=========================================================");
+        System.out.println("========================The Board========================");
+        //canMoveHere = w72.move(myBoard,5,0);
+        currentPieces = myBoard.showBoard();
 
     }
 }

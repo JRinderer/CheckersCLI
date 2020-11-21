@@ -71,19 +71,15 @@ public class Moves {
         int jmpX;
 
         int frwdMove = piece.getForwrdMove();
+        //for king pieces we need to allow them to move back and forth otherwise we can use the pieces default movement
         if(piece.getName().contains("K")){
-            jmpX = getJumpDirectX(piece,1);
+            jmpX = getJumpDirectX();
         }else{
             jmpX = endX + frwdMove;
         }
-
-        jmpY = getJumpDirectY(piece,validY);
-        /*
-        if(this.startY < this.endY){
-            jmpY = Math.abs(endY-1);
-        }else{
-            jmpY = Math.abs(validY);
-        }*/
+        //need to obtain the valid Y movement, this calculation is slightly different for each color so I've abstracted
+        //it to another function.
+        jmpY = getJumpDirectY(piece);
 
         int jumpMove = piece.getJumpMove();
 
@@ -103,16 +99,10 @@ public class Moves {
         } else {
             return false;
         }
-
-        /*if(validX - validY == 0){
-            return true;
-        }else{
-            return false;
-        }*/
     }
-    //
 
-    public int getJumpDirectX(Piece piece, int x){
+
+    public int getJumpDirectX(){
         int jmpX = 0;
         if(this.startX < this.endX){
             jmpX = this.endX - 1;
@@ -122,7 +112,7 @@ public class Moves {
         return jmpX;
     }
 
-    public int getJumpDirectY(Piece piece, int validY){
+    public int getJumpDirectY(Piece piece){
         int jmpY = 0;
 
         if(piece.getName().contains("K")){

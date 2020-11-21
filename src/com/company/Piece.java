@@ -19,5 +19,6 @@ public interface Piece {
     public void setKingRow(int kingRow);
     public int getKingRow();
 
+    //
 
 }

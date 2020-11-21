@@ -52,6 +52,7 @@ public class Main {
         r1.setyCord(1);
         canMove = r1.move(myBoard,7,2);
         currentPieces = myBoard.showBoard();
+        //
 
         while (cont.equals("y")) {
             System.out.println("Type a piece name:");

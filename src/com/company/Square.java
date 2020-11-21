@@ -9,6 +9,7 @@ public class Square {
     int x;
     int y;
 
+    //
 
     public int getX() {
         return x;

@@ -110,6 +110,7 @@ public class Moves {
             return false;
         }*/
     }
+    //
 
     public int getJumpDirectX(Piece piece, int x){
         int jmpX = 0;

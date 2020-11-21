@@ -138,6 +138,7 @@ public class RegularPiece implements Piece {
                 board.setPieceOnSpace(newKing,newKing.xCord,newKing.yCord);
             }
         }
+        //
 
         return valid; //return valid so the game knows the piece was or wasn't valid
 

@@ -8,6 +8,8 @@ public interface Piece {
     public void setName(String name);
     public int getId();
     public int getxCord();
+    public void setxCord(int xCord);
+    public void setyCord(int yCord);
     public int getyCord();
     public String getColor();
     public int getForwrdMove();
@@ -17,5 +19,6 @@ public interface Piece {
     public void setKingRow(int kingRow);
     public int getKingRow();
 
+    //
 
 }

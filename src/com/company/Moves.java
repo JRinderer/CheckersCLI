@@ -55,6 +55,7 @@ public class Moves {
         //regular pieces can only move forward DO NOT ALLOW ABS on regular pieces
         //also need to check if position is empty
         int validX;
+        int jmpY;
         if(piece.getStatus() <= 0){
             return false;
         }
@@ -67,9 +68,23 @@ public class Moves {
 
         int validY = Math.abs(this.startY - this.endY);
 
+        int jmpX;
+
         int frwdMove = piece.getForwrdMove();
-        int jmpX = endX + frwdMove;
-        int jmpY = Math.abs(endY + frwdMove);
+        if(piece.getName().contains("K")){
+            jmpX = getJumpDirectX(piece,1);
+        }else{
+            jmpX = endX + frwdMove;
+        }
+
+        jmpY = getJumpDirectY(piece,validY);
+        /*
+        if(this.startY < this.endY){
+            jmpY = Math.abs(endY-1);
+        }else{
+            jmpY = Math.abs(validY);
+        }*/
+
         int jumpMove = piece.getJumpMove();
 
         //regular piece movement validates the direction is correct... square comparison here is close but not exact
@@ -94,6 +109,47 @@ public class Moves {
         }else{
             return false;
         }*/
+    }
+    //
+
+    public int getJumpDirectX(Piece piece, int x){
+        int jmpX = 0;
+        if(this.startX < this.endX){
+            jmpX = this.endX - 1;
+        }else{
+            jmpX = this.endX + 1;
+        }
+        return jmpX;
+    }
+
+    public int getJumpDirectY(Piece piece, int validY){
+        int jmpY = 0;
+
+        if(piece.getName().contains("K")){
+            if(this.startY<this.endY){
+                jmpY = Math.abs(endY-1);
+                return jmpY;
+            }else{
+                jmpY = Math.abs(endY+1);
+                return jmpY;
+            }
+        }
+
+        if(piece.getColor().contains("R")){
+            if(this.startY < this.endY){
+                jmpY = Math.abs(endY-1);
+            }else{
+                jmpY = Math.abs(endY+1);
+            }
+        }else{
+            if(this.startY < this.endY){
+                jmpY = Math.abs(endY-1);
+            }else{
+                jmpY = Math.abs(endY + 1);
+            }
+        }
+        return jmpY;
+
     }
 
     public boolean isSquareEmpty(Board board, int x, int y) {

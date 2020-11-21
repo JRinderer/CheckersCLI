@@ -139,7 +139,7 @@ public class Moves {
             if(this.startY < this.endY){
                 jmpY = Math.abs(endY-1);
             }else{
-                jmpY = Math.abs(validY);
+                jmpY = Math.abs(endY+1);
             }
         }else{
             if(this.startY < this.endY){

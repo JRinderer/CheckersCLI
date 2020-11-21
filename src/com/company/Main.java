@@ -37,6 +37,7 @@ public class Main {
 
         System.out.println("Continue?");
         cont = myScanner.nextLine();
+        /*
         Piece r1 = currentPieces.get(1); //red piece
         Piece w1 = currentPieces.get(56);
         Piece w2 = currentPieces.get(49);
@@ -51,7 +52,7 @@ public class Main {
         r1.setxCord(6);
         r1.setyCord(1);
         canMove = r1.move(myBoard,7,2);
-        currentPieces = myBoard.showBoard();
+        currentPieces = myBoard.showBoard();*/
         //
 
         while (cont.equals("y")) {

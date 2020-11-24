@@ -87,10 +87,14 @@ public class Main {
             y = myScanner.nextInt();
             myScanner.nextLine();
             canMove = piece.move(myBoard, x, y, playerHolder);
-            playerHolder.setTurn(false);
             Player.flipTurn(players);
-            System.out.println(playerHolder.getColor());
-            System.out.println(playerHolder.isTurn());
+            playerHolder.setTurn(false);
+            for(Player p : players){
+                System.out.println(p.isTurn());
+               // System.out.println(playerHolder.isTurn());
+            }
+            //System.out.println(playerHolder.getColor());
+            //System.out.println(playerHolder.isTurn());
             currentPieces = myBoard.showBoard();
             System.out.println("Continue?");
             cont = myScanner.nextLine();

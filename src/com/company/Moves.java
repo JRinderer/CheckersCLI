@@ -7,6 +7,15 @@ public class Moves {
     int endX;
     int endY;
     Piece piece;
+    Player player;
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
     public int getStartX() {
         return startX;
@@ -56,7 +65,7 @@ public class Moves {
         //also need to check if position is empty
         int validX;
         int jmpY;
-        if(piece.getStatus() <= 0){
+        if(piece.getStatus() <= 0 || !this.player.isTurn()){ //if the piece being moved is dead or it's not the players turn
             return false;
         }
 
@@ -86,7 +95,7 @@ public class Moves {
         //regular piece movement validates the direction is correct... square comparison here is close but not exact
         if ((validX == frwdMove) && (validY == 1) && (!board.squares[endX][endY].getPiece().getColor().equals(piece.getColor()))) {
             return true;
-        }else if ((validX == jumpMove) && (validY == 2) && (isSquareEmpty(board, endX, endY))) {
+        } else if ((validX == jumpMove) && (validY == 2) && (isSquareEmpty(board, endX, endY))) {
             //need to change - 1 to + 1 when white is moving
             boolean x = pieceJumped(board, piece, (jmpX), (jmpY));
             //boolean x = pieceJumped(board,piece,(endX-1),(endY-1));
@@ -171,11 +180,12 @@ public class Moves {
 
 
 
-    public Moves(Piece piece, int endX, int endY) {
+    public Moves(Piece piece, int endX, int endY, Player player) {
         this.startX = piece.getxCord();
         this.startY = piece.getyCord();
         this.endX = endX;
         this.endY = endY;
         this.piece = piece;
+        this.player = player;
     }
 }

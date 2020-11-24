@@ -2,18 +2,21 @@ package com.company;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
 
-    public static Piece findPiece(String name, Board board) {
+    public static Piece findPiece(String name, Board board, Player player) {
         ArrayList<Piece> myLIst = new ArrayList<>();
         myLIst = board.getPieces();
         for (Piece piece : myLIst) {
-            if (piece.getName().contains(name)) {
+            //validate that the piece name exists, and that the color is the same as the players
+            if (piece.getName().contains(name) && player.getColor().equals(piece.getColor())) {
                 return piece;
             }
         }
+        System.out.println("The piece doesn't exist, or the players color doesn't match the piece selected. Try again");
         return null;
     }
 
@@ -22,8 +25,6 @@ public class Main {
         ArrayList<Piece> currentPieces = new ArrayList<>();
         Scanner myScanner = new Scanner(System.in);
         Board myBoard = new Board();
-        System.out.println("=========================================================");
-        System.out.println("========================The Board========================");
 
         String cont = "y";
         String pieceName;
@@ -37,6 +38,15 @@ public class Main {
 
         System.out.println("Continue?");
         cont = myScanner.nextLine();
+
+        //setup players red goes first
+        Player redPlayer = new Player(true,"R");
+        Player whitePlayer = new Player(false,"W");
+        //create an array list and store our players
+        ArrayList<Player> players = new ArrayList<>();
+        players.add(redPlayer);
+        players.add(whitePlayer);
+
         /*
         Piece r1 = currentPieces.get(1); //red piece
         Piece w1 = currentPieces.get(56);
@@ -54,19 +64,33 @@ public class Main {
         canMove = r1.move(myBoard,7,2);
         currentPieces = myBoard.showBoard();*/
         //
+        Player playerHolder = new Player();
 
         while (cont.equals("y")) {
+            //determine what players turn it is
+
+            playerHolder = Player.whosTurn(players);
+
             System.out.println("Type a piece name:");
             pieceName = myScanner.nextLine();
-            piece = findPiece(pieceName, myBoard);
+            piece = findPiece(pieceName, myBoard, playerHolder);
+
+            while(Objects.isNull(piece)){
+                System.out.println("Type a piece name:");
+                pieceName = myScanner.nextLine();
+                piece = findPiece(pieceName, myBoard, playerHolder);
+            }
+            //added
             System.out.println("Enter the X coordinates to move the piece:");
             x = myScanner.nextInt();
             System.out.println("Enter the Y Coordinates to move the piece:");
             y = myScanner.nextInt();
             myScanner.nextLine();
-            canMove = piece.move(myBoard, x, y);
-            System.out.println("=========================================================");
-            System.out.println("========================The Board========================");
+            canMove = piece.move(myBoard, x, y, playerHolder);
+            playerHolder.setTurn(false);
+            Player.flipTurn(players);
+            System.out.println(playerHolder.getColor());
+            System.out.println(playerHolder.isTurn());
             currentPieces = myBoard.showBoard();
             System.out.println("Continue?");
             cont = myScanner.nextLine();

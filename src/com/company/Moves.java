@@ -86,7 +86,7 @@ public class Moves {
         //regular piece movement validates the direction is correct... square comparison here is close but not exact
         if ((validX == frwdMove) && (validY == 1) && (!board.squares[endX][endY].getPiece().getColor().equals(piece.getColor()))) {
             return true;
-        } else if ((validX == jumpMove) && (validY == 2) && (isSquareEmpty(board, endX, endY))) {
+        }else if ((validX == jumpMove) && (validY == 2) && (isSquareEmpty(board, endX, endY))) {
             //need to change - 1 to + 1 when white is moving
             boolean x = pieceJumped(board, piece, (jmpX), (jmpY));
             //boolean x = pieceJumped(board,piece,(endX-1),(endY-1));

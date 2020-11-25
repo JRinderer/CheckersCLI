@@ -4,10 +4,11 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-    public static Piece findPiece(String name, Board board, Player player) {
+    public static Piece findPiece(String name, Board board, Player player) throws InterruptedException {
         ArrayList<Piece> myLIst = new ArrayList<>();
         myLIst = board.getPieces();
         for (Piece piece : myLIst) {
@@ -20,11 +21,12 @@ public class Main {
             }
         }
         System.out.println("The piece doesn't exist, or the players color doesn't match the piece selected. Try again");
+        TimeUnit.SECONDS.sleep(1);
         return null;
     }
 
     //Fixing git
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ArrayList<Piece> currentPieces = new ArrayList<>();
         Scanner myScanner = new Scanner(System.in);
         Board myBoard = new Board();
@@ -50,23 +52,7 @@ public class Main {
         players.add(redPlayer);
         players.add(whitePlayer);
 
-        /*
-        Piece r1 = currentPieces.get(1); //red piece
-        Piece w1 = currentPieces.get(56);
-        Piece w2 = currentPieces.get(49);
-
-        myBoard.removePieceOnSpace(0,1);
-
-        myBoard.removePieceOnSpace(7,2); //57
-        w1.setStatus(0);
-        w2.setStatus(0);
-        myBoard.removePieceOnSpace(6,1); //50
-        myBoard.setPieceOnSpace(r1,6,2);
-        r1.setxCord(6);
-        r1.setyCord(1);
-        canMove = r1.move(myBoard,7,2);
-        currentPieces = myBoard.showBoard();*/
-        //
+        //create a holder for the current player
         Player playerHolder = new Player();
 
         while (cont.equals("y")) {
@@ -84,21 +70,29 @@ public class Main {
                 piece = findPiece(pieceName, myBoard, playerHolder);
             }
             //added
-            System.out.println("Enter the X coordinates to move the piece:");
-            x = myScanner.nextInt();
-            System.out.println("Enter the Y Coordinates to move the piece:");
-            y = myScanner.nextInt();
-            myScanner.nextLine();
-            canMove = piece.move(myBoard, x, y, playerHolder);
-            if(!canMove){
-                System.out.println("Invalid move. Please try again!");
-            }else{
-                Player.flipTurn(players);
-                playerHolder.setTurn(false);
+            try {
+                System.out.println("Enter the X coordinates to move the piece:");
+                x = myScanner.nextInt();
+                System.out.println("Enter the Y Coordinates to move the piece:");
+                y = myScanner.nextInt();
+                myScanner.nextLine();
+                canMove = piece.move(myBoard, x, y, playerHolder);
+                if(!canMove){
+                    System.out.println("Invalid move. Please try again!");
+                    TimeUnit.SECONDS.sleep(1);
+                }else{
+                    Player.flipTurn(players);
+                    playerHolder.setTurn(false);
+                }
+            }catch (Exception ex){
+                System.out.println("Expected an integers for x ad y. Try again");
+                TimeUnit.SECONDS.sleep(1);
+
             }
 
             currentPieces = myBoard.showBoard();
             System.out.println("Continue?");
+            myScanner.nextLine();
             cont = myScanner.nextLine();
         }
 

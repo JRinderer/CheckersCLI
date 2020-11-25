@@ -9,56 +9,6 @@ public class Moves {
     Piece piece;
     Player player;
 
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public int getStartX() {
-        return startX;
-    }
-
-    public void setStartX(int startX) {
-        this.startX = startX;
-    }
-
-    public int getStartY() {
-        return startY;
-    }
-
-    public void setStartY(int startY) {
-        this.startY = startY;
-    }
-
-    public int getEndX() {
-        return endX;
-    }
-
-    public void setEndX(int endX) {
-        this.endX = endX;
-    }
-
-    public int getEndY() {
-        return endY;
-    }
-
-    public void setEndY(int endY) {
-        this.endY = endY;
-    }
-
-    public Piece getPiece() {
-
-        return piece;
-    }
-
-    public void setPiece(Piece piece) {
-
-        this.piece = piece;
-    }
-
     //test
     public boolean validMove(Board board, Piece piece) {
         //regular pieces can only move forward DO NOT ALLOW ABS on regular pieces
@@ -93,15 +43,15 @@ public class Moves {
         int jumpMove = piece.getJumpMove();
 
         //regular piece movement validates the direction is correct... square comparison here is close but not exact
-        if ((validX == frwdMove) && (validY == 1) && (!board.squares[endX][endY].getPiece().getColor().equals(piece.getColor()) && isSquareEmpty(board, endX,endY))) {
+        if ((validX == frwdMove) && (validY == 1) && isSquareEmpty(board, endX,endY)) {
             return true;
         } else if ((validX == jumpMove) && (validY == 2) && (isSquareEmpty(board, endX, endY))) {
             //need to change - 1 to + 1 when white is moving
-            boolean x = pieceJumped(board, piece, (jmpX), (jmpY));
+            boolean jmped = pieceJumped(board, piece, (jmpX), (jmpY));
             //boolean x = pieceJumped(board,piece,(endX-1),(endY-1));
-            if (x) {
+            if (jmped) {
                 board.removePieceOnSpace(jmpX, jmpY);
-                return x;
+                return jmped;
             } else {
                 return false;
             }

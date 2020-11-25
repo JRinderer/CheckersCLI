@@ -7,6 +7,7 @@ public class RegularPiece implements Piece {
     int xCord;
     int yCord;
     String name;
+    String fullName;
     Moves mov;
     int forwrdMove;
     int jumpMove;
@@ -14,6 +15,14 @@ public class RegularPiece implements Piece {
     int status;
     int kingRow;
     public static int counter=0;
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
     public int getKingRow() {
         return kingRow;
@@ -132,6 +141,7 @@ public class RegularPiece implements Piece {
             if(mov.isKingRow(this) && (!this.getName().contains("K"))){
                 KingPiece newKing = new KingPiece(this.color,Math.abs(this.forwrdMove),Math.abs(this.jumpMove));
                 newKing.setName("_K"+ color +  this.getxCord() + "-" + this.getyCord() + "_" );
+                newKing.setFullName("K"+color + this.getxCord() + "-" + this.getyCord());
                 board.removePieceOnSpace(this.xCord,this.yCord);
                 this.setStatus(0);
                 newKing.setxCord(this.xCord);

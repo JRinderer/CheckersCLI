@@ -18,6 +18,8 @@ public interface Piece {
     public void setStatus(int status);
     public void setKingRow(int kingRow);
     public int getKingRow();
+    public void setFullName(String fullName);
+    public String getFullName();
 
     //
 

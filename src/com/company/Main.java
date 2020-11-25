@@ -12,7 +12,10 @@ public class Main {
         myLIst = board.getPieces();
         for (Piece piece : myLIst) {
             //validate that the piece name exists, and that the color is the same as the players
-            if (piece.getName().contains(name) && player.getColor().equals(piece.getColor())) {
+            if(Objects.isNull(piece.getFullName())){
+                System.out.println(piece.getName());
+            }
+            if (piece.getFullName().equals(name) && player.getColor().equals(piece.getColor())) {
                 return piece;
             }
         }

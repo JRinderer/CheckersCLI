@@ -64,6 +64,7 @@ public class Board {
                 RegularPiece thisPiece = new RegularPiece(color,move,jump);
                 setPieceOnSpace(thisPiece,row,y);
                 thisPiece.setName("__"+ color +  row + "-" + y + "_" );
+                thisPiece.setFullName(color + row + "-" + y);
                 thisPiece.setxCord(row);
                 thisPiece.setyCord(y);
                 pieces.add(thisPiece);
@@ -72,6 +73,7 @@ public class Board {
                 RegularPiece emptyPiece = new RegularPiece("",0,0);
                 setPieceOnSpace(emptyPiece,row,y);
                 emptyPiece.setName("__" + row + "-" + y + "__");
+                emptyPiece.setFullName("empty");
             }
 
         }
@@ -82,6 +84,7 @@ public class Board {
             RegularPiece emptyPiece = new RegularPiece("",0,0);
             setPieceOnSpace(emptyPiece,row,y);
             emptyPiece.setName("__" + row + "-" + y + "__");
+            emptyPiece.setFullName("empty");
         }
     }
 
@@ -93,6 +96,7 @@ public class Board {
                 RegularPiece thisPiece = new RegularPiece(color,move, jump);
                 setPieceOnSpace(thisPiece,row,y);
                 thisPiece.setName("__"+ color +  row + "-" + y + "_" );
+                thisPiece.setFullName(color + row + "-" + y);
                 thisPiece.setxCord(row);
                 thisPiece.setyCord(y);
                 pieces.add(thisPiece);
@@ -101,6 +105,7 @@ public class Board {
                 RegularPiece emptyPiece = new RegularPiece("",0,0);
                 setPieceOnSpace(emptyPiece,row,y);
                 emptyPiece.setName("__" + row + "-" + y + "__");
+                emptyPiece.setFullName("empty");
             }
 
         }
@@ -128,6 +133,7 @@ public class Board {
     public void removePieceOnSpace(int x, int y){
         RegularPiece emptyPiece = new RegularPiece("",0,0);
         emptyPiece.setName("__"+x+"-"+y+"__");
+        emptyPiece.setFullName("empty");
         squares[x][y].setPiece(emptyPiece);
     }
 

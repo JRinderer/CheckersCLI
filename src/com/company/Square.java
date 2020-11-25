@@ -35,6 +35,10 @@ public class Square {
         return piece.getName();
     }
 
+    public String getFullPieceName(){
+        return piece.getFullName();
+    }
+
     public void setPiece(Piece piece) {
         this.piece = piece;
     }

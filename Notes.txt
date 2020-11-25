@@ -220,3 +220,79 @@ the piece over and there's a crown. This indicates the piece is a king. In other
 Frankly, either is valid in my opinion for accomplishing what I want to do. I prefer the first method of passing the
 interface developer a list of all active pieces every time they show the board. It also lets me seperate out the king
 pieces from regular pieces. Something I want to do simply as an example.
+
+Pieces can move in the right direction, and can be converted to kings, which can then move in all directions. Jumps are
+also completed
+=======================================================================================================================
+Interface
+
+The interface needs to do a few things
+
+First: We need to provide a method for our end user (the game players) to be able to select a piece and move it. We've
+already handled valid movement and jumps in our pieces/moves code. So this is merely matter of selecting a piece to move.
+
+This means we need to get 2 things from the user:
+    1. What piece to select
+        1a. let the user type in the pieces name.
+            -Approimate match issues?
+            -Add a fully qualified name for our piece.
+        2a. present the user with all the pieces on the board
+            -User enters a numeric selection for that piece.
+            -That piece is the one we move.
+        3. One of these options will select a piece object.
+        4. We'd want to display the board to our users so they can see where the pieces are.
+
+    2. What coordinates to move to
+        2a. X coordinates
+        2b. Y coordinates.
+
+ With these two things we have completed the step of letting our users select pieces to move.
+
+ Second: We need to ensure that our players only can move on their turn.
+
+ Third: We need to ensure that our players can only move their pieces as well.
+
+ Based on this information we probably want to setup class called Player with some associated data and methods.
+
+ Player Class:
+
+    Data:
+        turn
+        color
+        won
+
+    The turn data will be boolean, color string (related to color we set in board) and whether or not that player has won
+
+    We'll defintely use the default getters/setters here, at least I think we will. What want also want to do is change
+    turns in player class, creating a method to basically "flip the bits". So true becomes false, and false becomes true.
+
+    We'll want to create a red player and white player, set the red players turn to true (since they go first), and the
+    white players turn to false. We'll also want to setup the approprieate color string.
+
+    We have two approaches we can take to handling turns. First, we can put more work in the interface side, we can check
+    if red.isTurn, or white.isTurn, and handle things in interface.
+
+    We'd create an empty Player that we can call something like activePlayer or tempPlayer. This will hold the player
+    that is currently active.
+
+    Our if tests would set our activePlayer to red or white based on which one is up for their turn.
+
+    Then we turn that player "off" when they take their turn.
+
+    Another approach is to create an ArrayList of players that we can add our red and white player too. Pass that list
+    to static methods in our Player class, and then flip the bits, and check whose turn it is.
+
+    Either approach is valid in this case.
+
+Basic error handling:
+
+    Beyond that we'll want to have some basic error handling. What happesn if the users move is invalid? We want to
+    inform them of that, and let them try again. So we don't want their turn to end.
+
+    What happens if the player selects and attempts to move the wrong piece? We'll obviously want to inform them of this
+    as well and let them attempt again.
+
+    We'll also want to make sure if they enter invalid data, like bad piece names, or invalid coordinates we handle that.
+    If we're expecting integers, we want to handle bad input without crashing.
+
+

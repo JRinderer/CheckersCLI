@@ -87,14 +87,13 @@ public class Main {
             y = myScanner.nextInt();
             myScanner.nextLine();
             canMove = piece.move(myBoard, x, y, playerHolder);
-            Player.flipTurn(players);
-            playerHolder.setTurn(false);
-            for(Player p : players){
-                System.out.println(p.isTurn());
-               // System.out.println(playerHolder.isTurn());
+            if(!canMove){
+                System.out.println("Invalid move. Please try again!");
+            }else{
+                Player.flipTurn(players);
+                playerHolder.setTurn(false);
             }
-            //System.out.println(playerHolder.getColor());
-            //System.out.println(playerHolder.isTurn());
+
             currentPieces = myBoard.showBoard();
             System.out.println("Continue?");
             cont = myScanner.nextLine();

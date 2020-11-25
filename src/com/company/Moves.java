@@ -93,7 +93,7 @@ public class Moves {
         int jumpMove = piece.getJumpMove();
 
         //regular piece movement validates the direction is correct... square comparison here is close but not exact
-        if ((validX == frwdMove) && (validY == 1) && (!board.squares[endX][endY].getPiece().getColor().equals(piece.getColor()) && isSquareEmpty(board, endX,endY))) {
+        if ((validX == frwdMove) && (validY == 1) && isSquareEmpty(board, endX,endY)) {
             return true;
         } else if ((validX == jumpMove) && (validY == 2) && (isSquareEmpty(board, endX, endY))) {
             //need to change - 1 to + 1 when white is moving

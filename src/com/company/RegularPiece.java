@@ -110,24 +110,25 @@ public class RegularPiece implements Piece {
         }
         counter++;
 
-        }
+    }
 
     public RegularPiece(){
         this.setId(counter);
         counter++;
     }
 
-    public boolean move(Board board, int x, int y){
+    public boolean move(Board board, int x, int y, Player player){
         int curX = this.xCord;
         int curY = this.yCord;
-        mov = new Moves(this, x,y);
+        mov = new Moves(this, x,y, player);
         boolean valid = mov.validMove(board,this);
-        //if the move is valid and the piece isn't dead, dead being 0
+        //if the move is valid
         if(valid){
             this.xCord = x; //set the X coordinates so the pieces position is updated
             this.yCord = y; //set the Y coordinates so the pieces position is updated
             board.setPieceOnSpace(this,this.xCord,this.yCord); //move the piece on the board
             board.removePieceOnSpace(curX,curY); //remove the piece from it's old position
+            //check if the move has created a king piece
             if(mov.isKingRow(this) && (!this.getName().contains("K"))){
                 KingPiece newKing = new KingPiece(this.color,Math.abs(this.forwrdMove),Math.abs(this.jumpMove));
                 newKing.setName("_K"+ color +  this.getxCord() + "-" + this.getyCord() + "_" );

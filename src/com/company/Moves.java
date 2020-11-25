@@ -7,6 +7,15 @@ public class Moves {
     int endX;
     int endY;
     Piece piece;
+    Player player;
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
     public int getStartX() {
         return startX;
@@ -56,7 +65,7 @@ public class Moves {
         //also need to check if position is empty
         int validX;
         int jmpY;
-        if(piece.getStatus() <= 0){
+        if(piece.getStatus() <= 0 || !this.player.isTurn()){ //if the piece being moved is dead or it's not the players turn
             return false;
         }
 
@@ -171,11 +180,12 @@ public class Moves {
 
 
 
-    public Moves(Piece piece, int endX, int endY) {
+    public Moves(Piece piece, int endX, int endY, Player player) {
         this.startX = piece.getxCord();
         this.startY = piece.getyCord();
         this.endX = endX;
         this.endY = endY;
         this.piece = piece;
+        this.player = player;
     }
 }

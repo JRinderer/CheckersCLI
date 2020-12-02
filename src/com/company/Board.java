@@ -11,7 +11,16 @@ public class Board {
     Square[][] squares = new Square[8][8];
 
     public Board() {
+
         this.setBoard();
+        RegularPiece thisPiece = new RegularPiece("R",-1,-2);
+        setPieceOnSpace(thisPiece,2,3);
+        thisPiece.setName("__"+ "R" +  2 + "-" + 3 + "_" );
+        thisPiece.setFullName("R" + 2 + "-" + 3);
+        thisPiece.setxCord(2);
+        thisPiece.setyCord(3);
+        //pieces.add(thisPiece);
+        squares[2][3].setPiece(thisPiece);
     }
 
 
@@ -30,13 +39,16 @@ public class Board {
         for (int x = 0; x < 8; x++) {
             switch (x) {
                 case 0:
-                    setEvenCols(x, redPieces, "R",-1, -2);
+                    sentAllBlank(x);
+                    //setEvenCols(x, redPieces, "R",-1, -2);
                     break;
                 case 1:
-                    setOddCols(x,redPieces,"R",-1, -2);
+                    sentAllBlank(x);
+                    //setOddCols(x,redPieces,"R",-1, -2);
                     break;
                 case 2:
-                    setEvenCols(x,redPieces,"R",-1, -2);
+                    sentAllBlank(x);
+                    //setEvenCols(x,redPieces,"R",-1, -2);
                     break;
                 case 3: //empty rows
                     sentAllBlank(x);

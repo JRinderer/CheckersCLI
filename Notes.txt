@@ -296,3 +296,5 @@ Basic error handling:
     If we're expecting integers, we want to handle bad input without crashing.
 
 
+Game Over:
+    A game is over when all the pieces of 1 color are gone; or when a player surrenders.

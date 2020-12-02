@@ -13,7 +13,7 @@ public class Main {
         myLIst = board.getPieces();
         for (Piece piece : myLIst) {
             //validate that the piece name exists, and that the color is the same as the players
-            if(Objects.isNull(piece.getFullName())){
+            if (Objects.isNull(piece.getFullName())) {
                 System.out.println(piece.getName());
             }
             if (piece.getFullName().equals(name) && player.getColor().equals(piece.getColor())) {
@@ -30,6 +30,7 @@ public class Main {
         ArrayList<Piece> currentPieces = new ArrayList<>();
         Scanner myScanner = new Scanner(System.in);
         Board myBoard = new Board();
+        Game thisGame = new Game();
 
         String cont = "y";
         String pieceName;
@@ -41,60 +42,105 @@ public class Main {
 
         currentPieces = myBoard.showBoard();
 
-        System.out.println("Continue?");
-        cont = myScanner.nextLine();
-
         //setup players red goes first
-        Player redPlayer = new Player(true,"R");
-        Player whitePlayer = new Player(false,"W");
+        Player redPlayer = new Player(true, "R");
+        Player whitePlayer = new Player(false, "W");
         //create an array list and store our players
         ArrayList<Player> players = new ArrayList<>();
         players.add(redPlayer);
         players.add(whitePlayer);
 
         //create a holder for the current player
-        Player playerHolder = new Player();
+        Player currentPlayerHolder = new Player();
+        Player oppositePlayerHolder = new Player();
 
-        while (cont.equals("y")) {
+        System.out.println("Would you like to surrender?");
+        cont = myScanner.nextLine();
+
+        if (cont.equals("y")) {
+            redPlayer.setWon(false);
+            whitePlayer.setWon(true);
+        }
+
+        while (thisGame.isOver()){//cont.equals("n") && (!Player.gameOver(players))) {
             //determine what players turn it is
+            Player.gameOver(players);
 
-            playerHolder = Player.whosTurn(players);
+        currentPlayerHolder = Player.whosTurn(players);
+        oppositePlayerHolder = Player.whosTurnIsnt(players);
 
+        System.out.println("Type a piece name:");
+        pieceName = myScanner.nextLine();
+        piece = findPiece(pieceName, myBoard, currentPlayerHolder);
+
+        while (Objects.isNull(piece)) {
             System.out.println("Type a piece name:");
             pieceName = myScanner.nextLine();
-            piece = findPiece(pieceName, myBoard, playerHolder);
-
-            while(Objects.isNull(piece)){
-                System.out.println("Type a piece name:");
-                pieceName = myScanner.nextLine();
-                piece = findPiece(pieceName, myBoard, playerHolder);
-            }
-            //added
-            try {
-                System.out.println("Enter the X coordinates to move the piece:");
-                x = myScanner.nextInt();
-                System.out.println("Enter the Y Coordinates to move the piece:");
-                y = myScanner.nextInt();
-                myScanner.nextLine();
-                canMove = piece.move(myBoard, x, y, playerHolder);
-                if(!canMove){
-                    System.out.println("Invalid move. Please try again!");
-                    TimeUnit.SECONDS.sleep(1);
-                }else{
-                    Player.flipTurn(players);
-                    playerHolder.setTurn(false);
-                }
-            }catch (Exception ex){
-                System.out.println("Expected an integers for x ad y. Try again");
-                TimeUnit.SECONDS.sleep(1);
-
-            }
-
-            currentPieces = myBoard.showBoard();
-            System.out.println("Continue?");
+            piece = findPiece(pieceName, myBoard, currentPlayerHolder);
+        }
+        //added
+        try {
+            System.out.println("Enter the X coordinates to move the piece:");
+            x = myScanner.nextInt();
+            System.out.println("Enter the Y Coordinates to move the piece:");
+            y = myScanner.nextInt();
             myScanner.nextLine();
-            cont = myScanner.nextLine();
+            canMove = piece.move(myBoard, x, y, currentPlayerHolder);
+            if (!canMove) {
+                System.out.println("Invalid move. Please try again!");
+                TimeUnit.SECONDS.sleep(1);
+            } else {
+                Player.flipTurn(players);
+                currentPlayerHolder.setTurn(false);
+            }
+        } catch (Exception ex) {
+            System.out.println("Expected an integers for x ad y. Try again");
+            TimeUnit.SECONDS.sleep(1);
+
+        }
+
+        currentPieces = myBoard.showBoard();
+        System.out.println("Would you like to surrender?");
+        //myScanner.nextLine();
+        cont = myScanner.nextLine();
+
+        if (cont.equals("y")) {
+            thisGame.setOver(true);
+            currentPlayerHolder.setWon(false);
+            oppositePlayerHolder.setWon(true);
+        }
+
+        ArrayList<Piece> runningPieces = myBoard.getPieces();
+        int redCounter = 0;
+        int whiteCounter = 0;
+
+        for (Piece p : runningPieces) {
+            if (p.getColor().equals("R")) {
+                redCounter++;
+            } else if (p.getColor().equals("W")) {
+                whiteCounter++;
+            }
+        }
+
+        if (redCounter == 0) {
+            thisGame.setOver(true);
+            redPlayer.setWon(false);
+            whitePlayer.setWon(true);
+        } else if (whiteCounter == 0) {
+            thisGame.setOver(true);
+            whitePlayer.setWon(false);
+            redPlayer.setWon(true);
         }
 
     }
+
+        if (redPlayer.isWon()) {
+            System.out.println("Red Won");
+        } else if (whitePlayer.isWon()) {
+            System.out.println("White Won");
+        } else {
+            System.out.println("I have no idea what happened");
+        }
 }
+}
+

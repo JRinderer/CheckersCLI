@@ -1,5 +1,6 @@
 package com.company;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Player {
@@ -20,9 +21,38 @@ public class Player {
         return turn;
     }
 
+    public static boolean gameOver(ArrayList<Player> players){
+        for(Player plyr : players){
+            if(plyr.isWon()){
+                System.out.println(plyr.isWon());
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public static Player whoWon(ArrayList<Player> players){
+        for(Player plyr : players){
+            if(plyr.isWon()){
+                return plyr;
+            }
+        }
+        return null;
+    }
+
     public static Player whosTurn(ArrayList<Player> players){
         for(Player plyr : players){
             if(plyr.isTurn()){
+                return plyr;
+            }
+        }
+        return null;
+    }
+
+    public static Player whosTurnIsnt(ArrayList<Player> players){
+        for(Player plyr : players){
+            if(!plyr.isTurn()){
                 return plyr;
             }
         }
@@ -53,6 +83,7 @@ public class Player {
     public Player(boolean turn, String color) {
         this.turn = turn;
         this.color = color;
+        this.won = false;
     }
     public Player(){
 

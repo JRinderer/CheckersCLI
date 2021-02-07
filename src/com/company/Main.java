@@ -59,6 +59,7 @@ public class Main {
             //determine what players turn it is
 
             playerHolder = Player.whosTurn(players);
+            System.out.println(playerHolder.getColor() + " Player Turn");
 
             System.out.println("Type a piece name:");
             pieceName = myScanner.nextLine();
@@ -92,7 +93,6 @@ public class Main {
 
             currentPieces = myBoard.showBoard();
             System.out.println("Continue?");
-            myScanner.nextLine();
             cont = myScanner.nextLine();
         }
 
